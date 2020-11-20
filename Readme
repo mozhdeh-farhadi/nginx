@@ -1,0 +1,11 @@
+Readme:
+
+to create docker image:
+Docker build -t mybros:v1
+
+to build cluster in K8s:
+kubectl create -f  /Users/mozhdehfarhadi/repos/privacy/mybros/myipkube.yaml
+
+kubectl create -f  yaml.yaml
+
+

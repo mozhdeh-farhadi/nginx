@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx-svc
+spec:
+  selector:
+    matchLabels:
+      app: mynginxprjA
+      run: mynginx-svc
+  template:
+    metadata:
+      labels:
+        app: mynginxprjA
+        run: mynginx-svc
+    spec:
+      containers:
+      - name: mynginx-svc
+        image: nginx
+        ports:
+        - containerPort: 3304
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mynginx-svc
+  labels:
+    app: mynginxprjA
+    run: mynginx-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 3304
+    nodePort: 30084
+    protocol: TCP
+  selector:
+    run: mynginx-svc
